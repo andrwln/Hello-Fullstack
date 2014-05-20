@@ -10,7 +10,8 @@ $("#input-button").on("click", function() {
   event.preventDefault();
   userInput = document.getElementById("user-input").value;
 
-  if (jQuery.inArray(userInput, duplicateArr)!==-1) { //Checks for duplicate inputs with array created above
+  duplicate = (jQuery.inArray(userInput, duplicateArr)!==-1)
+  if (duplicate) { //Checks for duplicate inputs with array created above
     alert("You have already guessed this number. Please pick another.")
     i++; //adds back one guess for a duplicate input
   };
@@ -63,11 +64,15 @@ $("#input-button").on("click", function() {
       return "Congratulations! You guessed right!";
     };
   };
-  if (userInput >= 0 && userInput <= 100 && userInput.length > 0) {
+  if (userInput >= 0 && userInput <= 100 && userInput.length > 0 && !duplicate) {
     $("#guess-result").text(output()); // shows whether user's guess was hot or cold given a valid guess
   }
   else {
     $("#guess-result").text(''); //clears prior guess result after an invalid guess
+  }
+
+  if (i <= 0) {
+    $("#guess-result").text('');
   }
 });
 
