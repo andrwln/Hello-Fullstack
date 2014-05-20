@@ -62,6 +62,7 @@ $("#input-button").on("click", function() {
     }
     else {
       return "Congratulations! You guessed right!";
+      $("#over").hide();
     };
   };
   if (userInput >= 0 && userInput <= 100 && userInput.length > 0 && !duplicate) {
@@ -71,9 +72,6 @@ $("#input-button").on("click", function() {
     $("#guess-result").text(''); //clears prior guess result after an invalid guess
   }
 
-  if (i <= 0) {
-    $("#guess-result").text('');
-  }
 });
 
 $("#reset").on("click", function() {
